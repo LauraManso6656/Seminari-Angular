@@ -4,6 +4,8 @@ import { ApiService } from '../posts/api.service';
 import { Usuario } from '../models/usuario.model';
 import { Organizacion } from '../models/organizacion.model';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog';
 
 @Component({
   selector: 'app-usuario-list',
@@ -20,7 +22,7 @@ export class UsuarioList implements OnInit {
   mostrarForm = false;
   usuarioForm!: FormGroup;
 
-  constructor(private api: ApiService, private fb: FormBuilder, private cdr: ChangeDetectorRef) {
+  constructor(private api: ApiService, private fb: FormBuilder, private cdr: ChangeDetectorRef, private dialog: MatDialog) {
     this.usuarioForm = this.fb.group({
       name: ['', Validators.required],
       organizacion: ['', Validators.required],
@@ -93,6 +95,18 @@ guardar(): void {
     }
   });
 }
+
+  confirmDelete(id: string, name: string) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: name
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.delete(id);
+      }
+    });
+  }
 
   delete(id: string): void {
     this.errorMsg = '';

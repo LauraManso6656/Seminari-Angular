@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../posts/api.service';
 import { Organizacion } from '../models/organizacion.model';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog';
+
 
 @Component({
   selector: 'app-organizacion-list',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatDialogModule],
   templateUrl: './organizacion-list.html',
   styleUrls: ['./organizacion-list.css'],
 })
@@ -19,7 +22,7 @@ export class OrganizacionList implements OnInit {
   mostrarForm = false;
   organizacionForm!: FormGroup;
 
-  constructor(private api: ApiService, private fb: FormBuilder, private cdr: ChangeDetectorRef) {
+  constructor(private api: ApiService, private fb: FormBuilder, private cdr: ChangeDetectorRef, private dialog: MatDialog) {
     this.organizacionForm = this.fb.group({
       nombre: ['', Validators.required],
     });
@@ -75,6 +78,18 @@ guardar(): void {
     }
   });
 }
+
+  confirmDelete(id: string, name?: string) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: name
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.delete(id);
+      }
+    });
+  }
 
   delete(id: string): void {
     this.errorMsg = '';

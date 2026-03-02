@@ -10,7 +10,7 @@
     </div>
     <div>
     <span class="muted" >{{ org._id }}</span>
-    <button type="button" class="btn delete-btn" (click)="delete(org._id)">X</button>
+    <button type="button" class="btn delete-btn" (click)="confirmDelete(org._id, org.name)">X</button>
     </div>
   </li>
 </ul>
