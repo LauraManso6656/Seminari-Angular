@@ -6,11 +6,14 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormControl } 
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog';
 
+// AÑADIDO (Tasca 3): Importación del nuevo componente que hemos creado para gestionar los usuarios de la organización.
+import { OrgUsersManager } from '../org-users-manager/org-users-manager';
 
 @Component({
   selector: 'app-organizacion-list',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatDialogModule],
+  // AÑADIDO (Tasca 3): Incluimos OrgUsersManager en los imports para que Angular sepa que usamos este componente en el HTML.
+  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, OrgUsersManager],
   templateUrl: './organizacion-list.html',
   styleUrls: ['./organizacion-list.css'],
 })

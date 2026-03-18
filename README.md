@@ -1,124 +1,19 @@
-# MiniSpa
+# Seminari-Angular: Gestión de Organizaciones y Usuarios
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+Este es un proyecto del frontend en Angular que se conecta a una API REST para administrar Organizaciones y sus respectivos Usuarios.
 
-## Structure
-
-```
-src/
-├── environments/
-│   └── environment.ts
-│
-└── app/
-    ├── app.ts
-    ├── app.spec.ts
-    ├── app.config.ts
-    ├── app.config.server.ts
-    ├── app.html
-    ├── app.css
-    ├── app.routes.ts
-    ├── app.routes.server.ts
-    │
-    ├── models/
-    │   ├── organizacion.model.ts
-    │   └── usuario.model.ts
-    │
-    ├── services/
-    │   ├── organizacion.service.ts
-    │   ├── organizacion.spec.ts
-    │   ├── usuario.service.ts
-    │   └── usuario.spec.ts
-    │
-    ├── organizacion-list/
-    │   ├── organizacion-list.ts
-    │   ├── organizacion-list.html
-    │   ├── organizacion-list.css
-    │   └── organizacion-list.spec.ts
-    │
-    ├── usuario-list/
-    │   ├── usuario-list.ts
-    │   ├── usuario-list.html
-    │   └── usuario-list.css
-    │
-    └── confirm-dialog/
-        ├── organizacion-list.ts
-        ├── organizacion-list.html
-        ├── organizacion-list.css
-        └── organizacion-list.spec.ts
-```
+## Funcionalidades Implementadas (Tareas)
+1. **Actualización de Modelos**: Adaptación de la interfaz `Organizacion` para soportar objetos anidados `Usuario`.
+2. **Control Flow Moderno**: Sustitución de directivas estructurales (`*ngIf`, `*ngFor`) por el nuevo sistema de Angular (`@if`, `@for`) en el componente de listado de organizaciones.
+3. **Gestor de Sincronización**: Creación del componente dedicado (`app-org-users-manager`) para añadir de forma dinámica (relacionar en base de datos) o eliminar a usuarios ya pertenecientes a las empresas seleccionadas.
 
 ---
 
-## Development server
+## Uso de Inteligencia Artificial (IA)
+En el desarrollo de este ejercicio, se ha contado con la asistencia de Inteligencia Artificial como herramienta de apoyo, concretamente reflejado en los comentarios del código:
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-To generate a new interface (models), run:
-
-```bash
-ng generate interface interface-name
-```
-
-To generate a new service, run:
-
-```bash
-ng generate service service-name
-```
-
-To generate a new pipe, run:
-
-```bash
-ng generate pipe pipe-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* **Componente y Vista HTML (`organizacion-list.html`)**: La gran mayoría de este archivo HTML se ha creado y arreglado utilizando la ayuda de la IA para solventar problemas técnicos que había con los botones, y para estructurar correctamente la interacción del nuevo *Control Flow* (`@for` / `@if`) con el menú desplegable.
+* **Componente Gestor (`org-users-manager.ts`)**:
+  * Funciones específicas de lógica compleja como el filtro `availableUsers` para descartar a los trabajadores que ya existían en la empresa (uso de IA).
+  * La suscripción a la red en la variable `orgUsersResult` que descarga los usuarios *populados*.
+  * diseño de los botones hecho con ayuda de ia

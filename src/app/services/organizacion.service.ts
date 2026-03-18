@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Organizacion } from '../models/organizacion.model';
+import { Usuario } from '../models/usuario.model';
 import { environment } from '../../environments/environment';
 
 
@@ -18,6 +19,13 @@ export class OrganizacionService {
   getOrganizaciones(): Observable<Organizacion[]> {
     return this.http.get<Organizacion[]>(
       `${this.baseUrl}/organizaciones`
+    );
+  }
+
+  // AÑADIDO: Función para obtener los usuarios de una organización con la información (.populate) completa
+  getOrganizacionUsuarios(id: string): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(
+      `${this.baseUrl}/organizaciones/${id}/users`
     );
   }
 
