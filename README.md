@@ -10,10 +10,11 @@ Este es un proyecto del frontend en Angular que se conecta a una API REST para a
 ---
 
 ## Uso de Inteligencia Artificial (IA)
-En el desarrollo de este ejercicio, se ha contado con la asistencia de Inteligencia Artificial como herramienta de apoyo, concretamente reflejado en los comentarios del código:
+En el desarrollo de este ejercicio, se ha contado con la asistencia de Inteligencia Artificial como herramienta de apoyo ya que había muchos errores que no sabía solucionar, concretamente reflejado en los comentarios del código:
 
 * **Componente y Vista HTML (`organizacion-list.html`)**: La gran mayoría de este archivo HTML se ha creado y arreglado utilizando la ayuda de la IA para solventar problemas técnicos que había con los botones, y para estructurar correctamente la interacción del nuevo *Control Flow* (`@for` / `@if`) con el menú desplegable.
 * **Componente Gestor (`org-users-manager.ts`)**:
   * Funciones específicas de lógica compleja como el filtro `availableUsers` para descartar a los trabajadores que ya existían en la empresa (uso de IA).
   * La suscripción a la red en la variable `orgUsersResult` que descarga los usuarios *populados*.
-  * diseño de los botones hecho con ayuda de ia
+  * diseño de los botones hecho con ayuda de ia 
+
